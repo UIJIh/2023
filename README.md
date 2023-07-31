@@ -1,2 +1,2 @@
 # 2023
-📝 wiki
+📝 Wiki & 📑 [blog](https://m.blog.naver.com/uijis?categoryNo=1)
