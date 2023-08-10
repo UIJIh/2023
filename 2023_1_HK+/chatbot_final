@@ -8,7 +8,7 @@ import asyncio
 import aiohttp
 
 application = Flask(__name__)
-application.secret_key = "my_secret_key_12345!@#"
+application.secret_key = ""
 a = {}
 filtered_morp = []
 lock = asyncio.Lock()
@@ -73,7 +73,7 @@ def get_schools():
     a[request_data['userRequest']['user']['id']] = '아직 AI가 처리중이에요'
 
     openApiURL = "http://aiopen.etri.re.kr:8000/WiseNLU"
-    accessKey = "c0d741d0-1225-41da-b291-b1f6039778ae"
+    accessKey = ""
     analysisCode = "wsd"
     text = generated_text
     requestJson = {
@@ -144,7 +144,7 @@ def get_schools():
 def chat_info_setting(text):
     global api_key, headers, data
 
-    api_key = "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"
+    api_key = ""
 
     headers = {
         "Content-Type": "application/json",
