@@ -11,20 +11,20 @@
 using namespace std;
 
 struct Student {
-    char name[16];        // ÀÌ¸§: ÃÖ´ë 15ÀÚ, ¿µ¾î
-    char studentID[11];   // ÇĞ¹ø: 10ÀÚ¸®, ¾Õ 4ÀÚ¸® ÀÔÇĞ³âµµ
-    char birthYear[5];    // »ı³â: 4ÀÚ¸®
-    char department[36];  // ÇĞ°ú
-    char tel[13];         // ¹øÈ£: ÃÖ´ë 12ÀÚ
+    char name[16];        // ì´ë¦„: ìµœëŒ€ 15ì, ì˜ì–´
+    char studentID[11];   // í•™ë²ˆ: 10ìë¦¬, ì• 4ìë¦¬ ì…í•™ë…„ë„
+    char birthYear[5];    // ìƒë…„: 4ìë¦¬
+    char department[36];  // í•™ê³¼
+    char tel[13];         // ë²ˆí˜¸: ìµœëŒ€ 12ì
 };
 
 vector<Student> students;
 
-const char* fileName = "file1.txt"; // ÇĞ»ı Á¤º¸
-int initialSortOption = 1; // ÃÊ±â Á¤·Ä, ÀÌ¸§ ¼ø
+const char* fileName = "file1.txt"; // í•™ìƒ ì •ë³´
+int initialSortOption = 1; // ì´ˆê¸° ì •ë ¬, ì´ë¦„ ìˆœ
 int* sortOption = &initialSortOption;
 
-// ¿À¸§Â÷¼ø
+// ì˜¤ë¦„ì°¨ìˆœ
 void sortByName() {
     std::sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
         return strcmp(a.name, b.name) < 0;
@@ -54,7 +54,7 @@ void sortByDepartment() {
         });
 }
 
-// ÆÄÀÏ¿¡¼­ ÇĞ»ı Á¤º¸¸¦ ÀĞ±â
+// íŒŒì¼ì—ì„œ í•™ìƒ ì •ë³´ë¥¼ ì½ê¸°
 void loadInfo() {
     ifstream file(fileName, ios::in | ios::binary);
 
@@ -67,7 +67,7 @@ void loadInfo() {
         sortByName();
     }
     else {
-        // ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì, ÆÄÀÏÀ» »ı¼º
+        // íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°, íŒŒì¼ì„ ìƒì„±
         ofstream createFile(fileName, ios::out | ios::binary);
         if (!createFile) {
             cout << "Error: Unable to create the file." << endl;
@@ -77,7 +77,7 @@ void loadInfo() {
     }
 }
 
-// ÇĞ»ı Á¤º¸ ÆÄÀÏ¿¡ ÀúÀå
+// í•™ìƒ ì •ë³´ íŒŒì¼ì— ì €ì¥
 void saveInfo() {
     ofstream file(fileName, ios::out | ios::binary);
     for (const Student& student : students) {
@@ -104,7 +104,7 @@ void displayInfo() {
     }
 }
 
-// ¿µ¾î·Î¸¸ ±¸¼ºµÇ´ÂÁö(ÀÌ¸§)
+// ì˜ì–´ë¡œë§Œ êµ¬ì„±ë˜ëŠ”ì§€(ì´ë¦„)
 bool isEnglish(const char* str) {
     for (int i = 0; str[i] != '\0'; i++) {
         if (!isalpha(str[i]) && !isspace(str[i])) {
@@ -114,7 +114,7 @@ bool isEnglish(const char* str) {
     return true;
 }
 
-// ¼ıÀÚ·Î¸¸ ±¸¼ºµÇ´ÂÁö(ÀÌ¸§,ÇĞºÎ ¿Ü)
+// ìˆ«ìë¡œë§Œ êµ¬ì„±ë˜ëŠ”ì§€(ì´ë¦„,í•™ë¶€ ì™¸)
 bool isNum(const char* str) {
     for (int i = 0; str[i] != '\0'; i++) {
         if (!isdigit(str[i]) && !isspace(str[i])) {
@@ -124,12 +124,12 @@ bool isNum(const char* str) {
     return true;
 }
 
-// ÇĞ»ı Á¤º¸ ÀÔ·Â
+// í•™ìƒ ì •ë³´ ì…ë ¥
 void insertInfo(int* sortOption) {
     Student student;
     bool validInput = false;
 
-    // ÀÌ¸§: ÇÊ¼ö, ÃÖ´ë 15ÀÚ, ¿µ¾î
+    // ì´ë¦„: í•„ìˆ˜, ìµœëŒ€ 15ì, ì˜ì–´
     do {
         cout << "\n\t\t\tName ? ";
         string input;
@@ -146,7 +146,7 @@ void insertInfo(int* sortOption) {
 
     validInput = false;
 
-    // ÇĞ¹ø: ÇÊ¼ö, 10ÀÚ¸®, ¾Õ 4ÀÚ¸®´Â ÀÔÇĞ³âµµ
+    // í•™ë²ˆ: í•„ìˆ˜, 10ìë¦¬, ì• 4ìë¦¬ëŠ” ì…í•™ë…„ë„
     do {
         cout << "\n\t\t\tStudent ID (10 digits) ? ";
         string input;
@@ -172,7 +172,7 @@ void insertInfo(int* sortOption) {
 
     validInput = false;
 
-    // »ı³â: 4ÀÚ¸®
+    // ìƒë…„: 4ìë¦¬
     do {
         cout << "\n\t\t\tBirth Year (4 digits) ? ";
         string input;
@@ -188,7 +188,7 @@ void insertInfo(int* sortOption) {
 
     validInput = false;
 
-    // ÇĞ°ú
+    // í•™ê³¼
     do {
         cout << "\n\t\t\tDepartment ? ";
         string input;
@@ -204,7 +204,7 @@ void insertInfo(int* sortOption) {
 
     validInput = false;
 
-    // ¹øÈ£: ÃÖ´ë 12ÀÚ
+    // ë²ˆí˜¸: ìµœëŒ€ 12ì
     do {
         cout << "\n\t\t\tTel ? ";
         string input;
@@ -220,7 +220,7 @@ void insertInfo(int* sortOption) {
 
     students.push_back(student);
 
-    // ÀÌÀüÀÇ Á¤·Ä ¿É¼ÇÀ¸·Î ´Ù½Ã Á¤·Ä
+    // ì´ì „ì˜ ì •ë ¬ ì˜µì…˜ìœ¼ë¡œ ë‹¤ì‹œ ì •ë ¬
     switch (*sortOption) {
     case 1:
         sortByName();
@@ -240,7 +240,7 @@ void insertInfo(int* sortOption) {
     cout << "\n\t\t\t> Completely Inserted!" << endl;
 }
 
-// ÇĞ»ı Á¤º¸ °Ë»ö 
+// í•™ìƒ ì •ë³´ ê²€ìƒ‰ 
 void searchInfo() {
     int getSearch;
     bool validInput = false;
@@ -358,7 +358,7 @@ void searchInfo() {
     }
 }
 
-// ÇĞ»ı Á¤º¸ Á¤·Ä
+// í•™ìƒ ì •ë³´ ì •ë ¬
 void sortInfo() {
     int getSort = *sortOption;
     bool validInput = false;
@@ -405,7 +405,7 @@ void sortInfo() {
 }
 
 int main() {
-    loadInfo(); // ÆÄÀÏ¿¡¼­ ÇĞ»ı Á¤º¸ ÀĞ±â
+    loadInfo(); // íŒŒì¼ì—ì„œ í•™ìƒ ì •ë³´ ì½ê¸°
 
     int getNumber;
     bool validInput = false;
