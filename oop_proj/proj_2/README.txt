@@ -34,10 +34,6 @@
 
 프로그램을 종료하려면 메인 화면에서 '4. Exit' 메뉴를 선택합니다.
 
-## 작성자
-
-작성자: 황의지
-
 ***
 
 # Student Information Management System
